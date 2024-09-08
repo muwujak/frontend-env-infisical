@@ -50,6 +50,11 @@ jobs:
           IMAGE_VERSION=${{env.MAJOR}}.${{env.MINOR}}.${{env.PATCH}}
           ' >> "$GITHUB_ENV"
 
+      -
+        name: mask secret and set env using xargs
+        run: |
+          ls -la
+          pwd
       # -
       #   name: Login to Docker registry
       #   uses: docker/login-action@v3
