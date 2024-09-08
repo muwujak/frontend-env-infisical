@@ -42,14 +42,13 @@ jobs:
       #   run: |
       #     cat ${{env.RUNNER_SECRET_PATH}} >> "$GITHUB_ENV"
       #     ${{env.RUNNER_SECRET_PATH}}.mask.sh
-      # -
-      #   name: mask secret and set env using xargs
-      #   run: |
-      #     echo '
-      #     IMAGE_NAME=${{env.PROJECT_NAME}}-image
-      #     IMAGE_VERSION=${{env.MAJOR}}.${{env.MINOR}}.${{env.PATCH}}
-      #     DEPLOYMENT_PATH=${{env.MANIFEST_BASE_PATH}}/${{env.PROJECT_GROUP}}/${{env.PROJECT_NAME}}/app/deployment.yaml
-      #     ' >> "$GITHUB_ENV"
+      -
+        name: mask secret and set env using xargs
+        run: |
+          echo '
+          IMAGE_NAME=${{env.PROJECT_NAME}}-image
+          IMAGE_VERSION=${{env.MAJOR}}.${{env.MINOR}}.${{env.PATCH}}
+          ' >> "$GITHUB_ENV"
 
       # -
       #   name: Login to Docker registry
