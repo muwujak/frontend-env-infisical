@@ -37,7 +37,7 @@ jobs:
           client-id: "21701a13-eb99-4549-93be-fe896cca3549" # Update this to your own Github references
           client-secret: "bb2e582268276e10f9abbb12329b24cd5fd6a85b59a90a97b9f9ed9eb3ae8f0e" # Update this to your own Github references
           env-slug: "prod"
-          project-slug: "homelab"
+          project-slug: "homelab-zow2"
           export-type: "file"
           file-output-path: "/.env" # defaults to "/.env"
 
