@@ -30,9 +30,10 @@ jobs:
 
     steps:
       - 
+        name: infisical secret
         uses: Infisical/secrets-action@v1.0.7
         with:
-          domain: infisical-web.infisical.svc
+          # domain: infisical-web.infisical.svc
           client-id: "21701a13-eb99-4549-93be-fe896cca3549" # Update this to your own Github references
           client-secret: "bb2e582268276e10f9abbb12329b24cd5fd6a85b59a90a97b9f9ed9eb3ae8f0e" # Update this to your own Github references
           env-slug: "prod"
