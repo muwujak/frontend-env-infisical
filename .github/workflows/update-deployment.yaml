@@ -19,13 +19,8 @@ jobs:
       MAJOR: "2"
       MINOR: "${{ github.run_number }}"
       PATCH: "${{ github.run_attempt }}"
-      REGISTRY_URL: "registry.sdlc.lacak.io"
-      MANIFEST_REPO: Virtue-Digital-Indonesia/k8s-manifest
-      MANIFEST_BRANCH: master
-      MANIFEST_WORKFLOW: update-deployment.yaml
-      RUNNER_SECRET_PATH: /actions/actions.secrets
+      REGISTRY_URL: "registry.homelab.mujak.id"
       BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-      MANIFEST_BASE_PATH: clusters/HX0/apps/${{ github.head_ref || github.ref_name }}/default
 
 
     steps:
@@ -64,28 +59,17 @@ jobs:
       #     username: ${{env.SECRETS_DOCKER_USERNAME}}
       #     password: ${{env.SECRETS_DOCKER_PASSWORD}}
 
-      # -
-      #   name: Set up Docker Buildx
-      #   uses: docker/setup-buildx-action@v3
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      # -
-      #   name: Build and push
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     context: ${{env.BUILD_CONTEXT}}
-      #     push: true
-      #     tags: ${{env.REGISTRY_URL}}/${{env.IMAGE_NAME}}:${{env.IMAGE_VERSION}}
-      #     build-args: |
-      #       VITE_DATA_GRID_PREMIUM_LICENSE=${{ vars.VITE_DATA_GRID_PREMIUM_LICENSE }}
-      #       VITE_API_BASE_URL=${{ vars.VITE_API_BASE_URL }}
-      #       VITE_APP_FILE_SERVER_URL=${{ vars.VITE_APP_FILE_SERVER_URL }}
-      #       VITE_ACCOUNTS_ENCODED=${{ vars.VITE_ACCOUNTS_ENCODED }}
-      #       VITE_ACCOUNTS_ENCODED=${{ vars.VITE_ACCOUNTS_ENCODED }}
-      #       VITE_MAPBOX_USERNAME=${{ vars.VITE_MAPBOX_USERNAME }}
-      #       VITE_MAPBOX_STYLE_ID_DARK=${{ vars.VITE_MAPBOX_STYLE_ID_DARK }}
-      #       VITE_MAPBOX_ACCESS_TOKEN=${{ vars.VITE_MAPBOX_ACCESS_TOKEN }}
-      #       VITE_MAPTILER_KEY=${{ vars.VITE_MAPTILER_KEY }}
-      #       VITE_VEHICLE_FETCH_INTERVAL=${{ vars.VITE_VEHICLE_FETCH_INTERVAL }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{env.BUILD_CONTEXT}}
+          push: true
+          tags: ${{env.REGISTRY_URL}}/${{env.IMAGE_NAME}}:${{env.IMAGE_VERSION}}
       # -
       #   name: trigger k8s manifest workflow
       #   uses: benc-uk/workflow-dispatch@v1
